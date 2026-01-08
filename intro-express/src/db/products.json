@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1767847734696,
+    "name": "Chocolatos Strawberry 351Gr",
+    "price": 30000,
+    "stocks": 3000,
+    "unit": "BOX"
+  },
+  {
+    "id": 1767848531655,
+    "name": "Indomie Goreng",
+    "price": 45000,
+    "stocks": 100,
+    "unit": "BOX"
+  }
+]
