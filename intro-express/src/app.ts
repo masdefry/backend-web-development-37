@@ -1,5 +1,7 @@
 import express, { NextFunction, Request, Response } from 'express';
 import productRouter from './routers/products.router';
+import actorRouter from './routers/actor.router';
+import poolConnection from './config/pool-connection.config';
 
 const port: number = 8000;
 
@@ -37,6 +39,15 @@ app.get('/test', (req: Request, res: Response) => {
 });
 
 app.use('/api/products', productRouter);
+app.use('/api/actors', actorRouter);
+
+poolConnection.connect((err, client, release) => {
+  if (err) return console.log(`Connection error ${err}`);
+
+  console.log(`Connection successfull`);
+
+  release();
+});
 
 app.listen(port, () => {
   console.log(`Application Running on Port ${port}`);
