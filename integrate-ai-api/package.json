@@ -1,5 +1,5 @@
 {
-  "name": "intro-orm",
+  "name": "integrate-ai-api",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -12,18 +12,15 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@types/pg": "^8.16.0",
-    "cors": "^2.8.5",
-    "express": "^5.2.1",
-    "pg": "^8.16.3"
+    "@openrouter/sdk": "^0.5.1",
+    "@prisma/client": "^7.3.0",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1"
   },
   "devDependencies": {
-    "@prisma/client": "^6.19.2",
-    "@types/cors": "^2.8.19",
     "@types/express": "^5.0.6",
-    "dotenv": "^17.2.3",
     "nodemon": "^3.1.11",
-    "prisma": "^6.19.2",
+    "prisma": "^7.3.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.3"
   }

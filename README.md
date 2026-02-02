@@ -54,3 +54,19 @@ Hello Students! 😉
     8. Running Express Typescript Projects
 
             ➡️ npm run dev
+
+🧑‍💻 How to Setup Prisma ORM?
+
+        1. Install Prisma & Prisma Client:
+
+                npm install prisma --save-dev
+
+                npm install @prisma/client
+
+        2. Init Prisma:
+
+                npx prisma init
+
+        3. Configure `DATABASE_URL` on `.env`:
+
+                DATABASE_URL="postgresql://[user]:[password]@localhost:5432/[dbname]"
