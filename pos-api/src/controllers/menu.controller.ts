@@ -11,4 +11,16 @@ export const menuController = {
       data: menus,
     });
   },
+
+  async getById(req: Request, res: Response) {
+    const { id } = req?.params;
+
+    const menu = await menuService?.getById(id as string);
+
+    res.status(200).json({
+      success: true,
+      message: `Get product with id = ${id} successful`,
+      data: menu,
+    });
+  },
 };
