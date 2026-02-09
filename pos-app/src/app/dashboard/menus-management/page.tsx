@@ -1,3 +1,5 @@
+'use client';
+import useAuthGuard from '@/hoc/useAuthGuard';
 import { FiChevronDown, FiSearch } from 'react-icons/fi';
 import {
   HiOutlinePencil,
@@ -7,7 +9,7 @@ import {
   HiOutlinePhoto,
 } from 'react-icons/hi2';
 
-export default function MenusManagementPage() {
+function MenusManagementPage() {
   return (
     <>
       <div className='flex flex-wrap items-center gap-3'>
@@ -207,3 +209,5 @@ export default function MenusManagementPage() {
     </>
   );
 }
+
+export default useAuthGuard(MenusManagementPage, ['ADMIN', 'SUPER_ADMIN']);

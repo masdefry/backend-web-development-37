@@ -55,4 +55,17 @@ export const authService = {
       token
     }
   },
+
+  async session(userId: string){
+    const findUserById = await prisma.user.findUnique({
+      where: {
+        id: userId
+      }
+    })
+
+    return {
+      username: findUserById?.username, 
+      role: findUserById?.role
+    }
+  }
 };

@@ -41,4 +41,19 @@ export const authController = {
       },
     });
   },
+
+  async session(req: Request, res: Response) {
+    const { userId } = res?.locals?.payload;
+
+    const { username, role } = await authService?.session(userId);
+
+    res.status(200).json({
+      success: true,
+      message: 'User auth is successful',
+      data: {
+        username,
+        role,
+      },
+    });
+  },
 };

@@ -1,37 +1,12 @@
 'use client';
 
-import { User } from '@/features/login/types';
-import axiosInstance from '@/utils/axiosInstance';
-import { useFormik } from 'formik';
 import { useState } from 'react';
 import { HiOutlineEye, HiOutlineEyeOff } from 'react-icons/hi';
+import { useFormLogin } from '@/features/login/hooks/useFormLogin';
 
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
-
-  const onHandleLogin = async ({
-    email,
-    password,
-  }: Pick<User, 'email' | 'password'>) => {
-    try {
-      await axiosInstance.post('/auth/login', {
-        email,
-        password,
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const formik = useFormik({
-    initialValues: {
-      email: '',
-      password: '',
-    },
-    onSubmit: async ({ email, password }) => {
-      await onHandleLogin({ email, password });
-    },
-  });
+  const {formik} = useFormLogin()
 
   return (
     <div className='min-h-screen bg-gray-100 flex items-center justify-center px-4'>

@@ -38,12 +38,27 @@ model Menu{
   name  String    @db.VarChar(50)
   price Int 
   description String  @db.VarChar(150)
-  isAvailable Boolean
-  imageUrl    String  
+  isAvailable Boolean 
+
+  menuImage   MenuImage[]
 
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
   deletedAt   DateTime?
 
   @@map("menus")
+}
+
+model MenuImage{
+  id      String      @id @default(cuid())
+  imageUrl String 
+
+  menuId    String 
+  menu      Menu      @relation(fields: [menuId], references: [id])
+
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  deletedAt   DateTime?
+
+  @@map("menu_images")
 }
