@@ -10,7 +10,8 @@ export const authService = {
     email,
     username,
     password,
-  }: Pick<User, 'email' | 'username' | 'password'>) {
+    role
+  }: Pick<User, 'email' | 'username' | 'password' | 'role'>) {
     const findUserByEmail = await prisma.user.findUnique({
       where: {
         email,
@@ -26,6 +27,7 @@ export const authService = {
         username,
         email,
         password: hashedPassword,
+        role
       },
     });
   },

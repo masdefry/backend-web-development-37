@@ -23,4 +23,28 @@ export const menuController = {
       data: menu,
     });
   },
+
+  async create(req: Request, res: Response){
+    const {name, price, description, isAvailable} = req.body; 
+    let files: Express.Multer.File[] = []; 
+
+    if(Array.isArray(req?.files)){
+      files = req?.files
+    }else{
+      files = (req.files as Record<string, Express.Multer.File[]>).imagesMenu || [];
+    }
+
+    await menuService?.create(files, {name, price, description, isAvailable});
+
+    res.status(201).json({
+      success: true, 
+      message: 'Create new menu successful', 
+      data: {
+        name, 
+        price, 
+        description, 
+        isAvailable
+      }
+    })
+  }
 };

@@ -1,4 +1,4 @@
-import type { NextConfig } from "next";
+npm install -g ts-nodeimport type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   /* config options here */
