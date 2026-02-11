@@ -9,7 +9,8 @@ export function multerUpload(
     allowedFileFormat: string[], 
     diskStorage: 'disk' | 'memory'
 ){
-    const storage = multer.diskStorage({
+    const storage = diskStorage === 'disk'? 
+    multer.diskStorage({
         destination: function (req, file, cb) {
             const mainDirectory = path.join(cwd()); 
             cb(null, `${mainDirectory}/${directory}`)
@@ -19,7 +20,9 @@ export function multerUpload(
             const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9) 
             cb(null, `${uniqueFileName}-${uniqueSuffix}.${arrayOriginalname[arrayOriginalname?.length-1]}`) // IMG-MENU-UNIQUESUFIX
         }
-    });
+    })
+    :
+    multer.memoryStorage();
 
     function fileFilter (req: Request, file: Express.Multer.File, cb: FileFilterCallback) {
         const arrayOriginalname = file?.originalname?.split('.');

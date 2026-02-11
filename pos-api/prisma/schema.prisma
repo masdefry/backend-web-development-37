@@ -16,9 +16,10 @@ datasource db {
 model User{
   id      String      @id @default(uuid())
   email   String      @unique
-  password String     
+  password String?     
   username String     @db.VarChar(25)
   role     Role       @default(CASHIER)
+  isActive Boolean    @default(false)
 
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt

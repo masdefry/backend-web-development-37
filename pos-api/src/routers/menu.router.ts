@@ -13,7 +13,7 @@ router.get('/:id', menuController.getById);
 router.post('/', 
     jwtVerify(JWT_TOKEN_SECRET_KEY!), 
     roleVerify(['ADMIN']), 
-    multerUpload('src/uploads', 'IMG-MENU', ['jpg', 'png', 'jpeg', 'svg', 'webp'], 'disk').array('imagesMenu', 3),
+    multerUpload('src/uploads', 'IMG-MENU', ['jpg', 'png', 'jpeg', 'svg', 'webp'], 'memory').array('imagesMenu', 3),
     createMenuValidator, 
     expressRequestValidation,
     menuController.create

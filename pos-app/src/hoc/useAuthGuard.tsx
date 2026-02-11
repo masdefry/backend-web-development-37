@@ -9,6 +9,7 @@ export default function useAuthGuard<P extends object>(
 ) {
   return function AuthGuardComponent(props: P) {
     const { role } = useAuthStore();
+    console.log(role);
     const isAuthorized = allowedRoles.includes(role);
 
     if (!isAuthorized) {
