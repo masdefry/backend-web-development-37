@@ -1,4 +1,4 @@
-import { body } from "express-validator";
+import { body, query } from "express-validator";
 
 export const createMenuValidator = [
     body('name').exists().withMessage('Menu name is required')
@@ -15,4 +15,16 @@ export const createMenuValidator = [
     .toInt(), 
 
     body('isAvailable').exists().withMessage("Menu available is required").toBoolean()
+]
+
+export const getAllMenuValidator = [
+    query('page')
+    .optional()
+    .isInt({min: 1})
+    .withMessage('Page must be greater than 1'),
+
+    query('limit')
+    .optional()
+    .isInt({min: 10, max: 100})
+    .withMessage('Limit must be between 1 and 100')
 ]

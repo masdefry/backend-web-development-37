@@ -3,12 +3,19 @@ import { menuService } from '../services/menu.service';
 
 export const menuController = {
   async getAll(req: Request, res: Response) {
-    const menus = await menuService.getAll();
+    const page = parseInt(req?.query?.page as string) || 1; 
+    const limit = parseInt(req?.query?.limit as string) || 10;
+
+    const {menus, totalMenus, totalPages} = await menuService.getAll(page, limit);
 
     res.status(200).json({
       success: true,
       message: 'Get all menu successful',
-      data: menus,
+      data: {
+        menus, 
+        totalMenus, 
+        totalPages
+      },
     });
   },
 

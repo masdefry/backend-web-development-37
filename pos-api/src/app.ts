@@ -9,6 +9,7 @@ import authRouter from './routers/auth.router';
 import cors from 'cors';
 import { corsOptions } from './configs/cors.config';
 import cookieParser from 'cookie-parser';
+import { log } from './helpers/winston.helper';
 
 const app: Express = express();
 const port = 5000;
@@ -20,9 +21,18 @@ app.use('/api/menus', menuRouter);
 app.use('/api/auth', authRouter);
 
 app.use((err: any, req: Request, res: Response, next: NextFunction) => {
-  console.log(err);
   const statusCode = err.expose === true ? err.statusCode : 500;
   const message = err.expose === true ? err.message : 'Something went wrong';
+
+  log.error(`${req.method} ${req.url} - ${message}`, {
+    statusCode,
+    name: err.name,
+    stack: err.stack,
+    body: req.body,
+    params: req.params,
+    query: req.query,
+    headers: req.headers,
+  });
 
   res.status(statusCode).json({
     success: false,
