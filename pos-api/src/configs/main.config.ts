@@ -9,3 +9,7 @@ export const USER_EMAILER = process.env.USER_EMAILER;
 export const PASSWORD_EMAILER = process.env.PASSWORD_EMAILER;
 export const JWT_ACCOUNT_ACTIVATION_SECRET_KEY = process.env.JWT_ACCOUNT_ACTIVATION_SECRET_KEY
 export const POS_APP_URL=process.env.POS_APP_URL
+export const REDIS_HOST = process.env.REDIS_HOST;
+export const REDIS_PORT = process.env.REDIS_PORT;
+export const REDIS_PASSWORD = process.env.REDIS_PASSWORD;
+export const REDIS_DB = process.env.REDIS_DB;
