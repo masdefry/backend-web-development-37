@@ -1,5 +1,4 @@
 import IORedis from 'ioredis';
-import { log } from '../helpers/winston.helper';
 import { REDIS_DB, REDIS_HOST, REDIS_PASSWORD, REDIS_PORT } from './main.config';
 
 const redisConfig = new IORedis({
@@ -12,8 +11,8 @@ const redisConfig = new IORedis({
 });
 
 redisConfig.on('connect', () =>
-  log.info('🔌[REDIS]: Connected to redis-server'),
+  console.info('🔌[REDIS]: Connected to redis-server'),
 );
-redisConfig.on('error', (err: any) => log.info(`❌[REDIS]: ${err}`));
+redisConfig.on('error', (err: any) => console.info(`❌[REDIS]: ${err}`));
 
 export default redisConfig;

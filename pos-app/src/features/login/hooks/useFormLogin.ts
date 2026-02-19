@@ -20,6 +20,7 @@ export function useFormLogin() {
 
         router.push('/dashboard');
       } catch (error: any) {
+        console.log(error);
         alert(error?.data?.message);
       }
     },
